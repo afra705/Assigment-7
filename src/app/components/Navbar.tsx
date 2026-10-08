@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import logo from '@/assets/logo-icon.png';
 import CategoryLinks from './CategoryLinks';
+import Link from 'next/link';
 
 const Navbar = () => {
     return (
@@ -16,8 +17,10 @@ const Navbar = () => {
             />
           </div>
           <div>
-            <h2 className="font-bold text-2xl">বাজার দর</h2>
-            <p className="text-[12px]">মঙ্গলবার, ৬ অক্টোবর, ২০২৬</p>
+            <Link href='/'>
+                <h2 className="font-bold text-2xl">বাজার দর</h2>
+                <p className="text-[12px]">মঙ্গলবার, ৬ অক্টোবর, ২০২৬</p>
+            </Link>
           </div>
         
         </div>

@@ -1,5 +1,8 @@
+
 import CardPage from "@/app/components/Card";
+import SortedProduct from "@/app/components/SortedProduct";
 import baseUrl from "@/app/lib/categorylinks";
+
 
 type IProduct = {
   id: number;
@@ -39,6 +42,7 @@ const getCategories = async()=>{
 }
 // 
 const CategoryDetails = async ({params,}: {params: Promise<Params>}) => {
+
   const { id } = await params;
 
   const res = await fetch(`${baseUrl}/products?category=${id}`,
@@ -55,9 +59,9 @@ const CategoryDetails = async ({params,}: {params: Promise<Params>}) => {
     (c) => c.slug === id);
     console.log(currentCategories);
 
-  return (
+return (
 <>
-    <div className="flex gap-2 bg-white p-5 rounded-2xl mt-10">
+    <div className="lg:w-7xl mx-auto flex gap-2 bg-white p-5 rounded-2xl mt-10">
         <div className="text-3xl">
             {currentCategories?.icon}
         </div>
@@ -67,22 +71,12 @@ const CategoryDetails = async ({params,}: {params: Promise<Params>}) => {
         </div>
     </div>
 {/* middle part */}
-    <div>
-        <select defaultValue="ডিফল্ট" className="select">
-        <option value='max to min'>দাম: কম থেকে বেশি </option>
-        <option value='min to max'>দাম: বেশি থেকে কম</option>
-        </select>
-    </div>
+   <SortedProduct products={data}/>
 
-      <p className="text-gray-500 text-[13px] mt-10 mb-2">মোট {data.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
-    <div className='grid grid-cols-3 gap-4 mt-10'>
-            {
-                data.map((product:IProduct)=> 
-                <CardPage key={product.id} product={product}></CardPage>)
-            }
-    </div>
+      
+   
 </>
   );
-};
 
+}
 export default CategoryDetails;
