@@ -30,9 +30,9 @@ const Marquee = async() => {
 
             {product.change.dir === "up" ? (
               <p className="text-red-700">▲{product.change.pct}%</p>
-            ) : (
+            ) :  product.change.dir === "down" ?(
              <p className="text-green-800">▼{product.change.pct}%</p>
-            )}
+            ): <p className="text-gray-800 ">— {product.change.pct}%</p>}
           </div>
         ))}
       </div>
