@@ -56,7 +56,7 @@ const CardPage = ({product}:IP) => {
       <div className="mt-0.5 flex items-center justify-between">
         
         <p className="text-base font-semibold text-gray-900">
-          {product.today} <span className="text-xs font-normal">টাকা</span>
+          {product.today.toLocaleString("bn-BD")} <span className="text-xs font-normal">টাকা</span>
         </p>
 
        {product.change.dir === "up" ? (
