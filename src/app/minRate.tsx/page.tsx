@@ -1,5 +1,6 @@
 import baseUrl from '../lib/categorylinks';
 import CardPage from '../components/Card';
+import Link from 'next/link';
 
 type IProduct = {
   id: number;
@@ -34,7 +35,10 @@ const MinPage = async() => {
             <div className='grid grid-cols-3 gap-4 mt-10'>
                 {
                 filteredData.map((product:IProduct)=> 
-                <CardPage key={product.id} product={product}></CardPage>)
+                <Link href={`/products/${product.id}`} key={product.id}>
+                <CardPage key={product.id} product={product}></CardPage>
+                </Link>
+            )
                 }
             </div>
         </div>
