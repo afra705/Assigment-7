@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getSessionCookie } from "better-auth/cookies";
 
-export default function proxy(request: NextRequest) {
-  const sessionCookie = request.cookies.get(
-    "better-auth.session_token"
-  )?.value;
-
+export function proxy(request: NextRequest) {
+  const sessionCookie = getSessionCookie(request);
   const { pathname } = request.nextUrl;
 
   if (
@@ -13,12 +11,14 @@ export default function proxy(request: NextRequest) {
       pathname.startsWith("/products")) &&
     !sessionCookie
   ) {
-    return NextResponse.redirect(new URL("/sign-in", request.url));
+    return NextResponse.redirect(
+      new URL("/sign-in", request.url)
+    );
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/products/:path*"],
+  matcher: ["/profile/:path*", "/products/:path*"],
 };
