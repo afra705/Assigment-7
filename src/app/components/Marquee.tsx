@@ -15,7 +15,7 @@ interface INavlinks{
 
 const Marquee = async() => {
 
-    const res = await fetch(`${baseUrl}/products`,{cache:'force-cache'});
+    const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products`,{cache:'force-cache'});
     const data = await res.json();
     console.log(data);
 

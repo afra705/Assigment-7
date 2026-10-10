@@ -50,7 +50,7 @@ const CategoryDetails = async ({
 }) => {
   const { id } = await params;
 
-  const res = await fetch(`${baseUrl}/products?category=${id}`, {
+  const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products?category=${id}`, {
     cache: "force-cache",
   });
 

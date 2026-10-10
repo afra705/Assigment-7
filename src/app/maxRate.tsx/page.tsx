@@ -24,7 +24,7 @@ type IProduct = {
 };
 
 const MaxRate = async () => {
-  const res = await fetch(`${baseUrl}/products`, {
+  const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products`, {
     cache: 'force-cache'
   });
 

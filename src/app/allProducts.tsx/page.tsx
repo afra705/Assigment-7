@@ -23,7 +23,7 @@ type IProduct = {
 };
 
 const AllProduct = async () => {
-  const res = await fetch(`${baseUrl}/products`, {
+  const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products`, {
     cache: 'force-cache'
   });
 

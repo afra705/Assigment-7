@@ -38,8 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
        </MarqueeText>
         <div className="max-w-7xl mx-auto">
           {children}
-          <Toaster/>
-         
+          <Toaster/>        
         </div>
          <Footer/>
         </body>

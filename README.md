@@ -29,4 +29,3 @@
 
 5. **🔐 User Authentication and Profile Management**  
    Sign up, sign in, and manage your account profile securely.
-

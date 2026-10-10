@@ -10,7 +10,7 @@ interface INavlinks {
 }
 
 const CategoryLinks = async () => {
-  const res = await fetch(`${baseUrl}/categories`, {
+  const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/categories`, {
     cache: "force-cache",
   });
 
