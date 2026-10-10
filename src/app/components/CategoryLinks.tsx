@@ -1,6 +1,4 @@
-
 import Link from "next/link";
-import baseUrl from "../lib/categorylinks";
 
 interface INavlinks {
   id: string;
@@ -10,9 +8,13 @@ interface INavlinks {
 }
 
 const CategoryLinks = async () => {
-  const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/categories`, {
+ const res = await fetch(
+  "https://openapi.programming-hero.com/api/bazardor/categories",
+  {
     cache: "force-cache",
-  });
+  }
+);
+
 
   const data: INavlinks[] = await res.json();
 
