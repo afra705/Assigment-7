@@ -1,5 +1,6 @@
 'use client'
 import CardPage from "@/app/components/Card";
+import Link from "next/link";
 import { useState } from "react";
 
 type IProduct = {
@@ -40,22 +41,31 @@ const SortedProduct = ({products}:{products:IProduct[]}) => {
 
     return (
         <div>
-     <div className="flex justify-end mt-10 bg-white p-4 rounded-2xl">
-        <p className="text-[13px] text-gray-500 flex items-center ml-3">সাজান</p>
-        <select value={sort} onChange={(e)=> setSort(e.target.value as          
-            | "কম থেকে বেশি"
-            | "বেশি থেকে কম")}  className="select w-40 ">
+        <div className=" mt-10 flex items-center justify-end bg-white px-4 py-2.5 rounded-2xl shadow-sm">
+        <span className="text-xs text-gray-500 font-medium mr-2">
+            সাজান
+        </span>
+        <select
+            value={sort}
+            onChange={(e) =>
+            setSort(
+                e.target.value as "ডিফল্ট" | "কম থেকে বেশি" | "বেশি থেকে কম"
+            )
+            }
+            className="h-8 w-33 text-xs text-gray-700 bg-white border border-gray-300 rounded-lg px-2 py-1 outline-none cursor-pointer focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all"
+        >
             <option value="ডিফল্ট">ডিফল্ট</option>
-            <option value='কম থেকে বেশি'>দাম: কম থেকে বেশি </option>
-            <option value='বেশি থেকে কম'>দাম: বেশি থেকে কম</option>
+            <option value="কম থেকে বেশি">দাম: কম থেকে বেশি</option>
+            <option value="বেশি থেকে কম">দাম: বেশি থেকে কম</option>
         </select>
-            
-     </div>
-        <p className="text-gray-500 text-[13px] mt-10 mb-2">মোট {products.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
+        </div>
+                <p className="text-gray-500 text-[13px] mt-10 mb-2">মোট {products.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
          <div className='grid grid-cols-3 gap-4 mt-10'>
             {
                 SortedProducts.map((product:IProduct)=> 
-                <CardPage key={product.id} product={product}></CardPage>)
+                <Link href={`/products/${product.id}`} key={product.id}>
+                <CardPage key={product.id} product={product}></CardPage>
+                </Link>)
             }
     </div>
     </div>

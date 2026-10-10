@@ -42,7 +42,7 @@ const banglaNumber = new Intl.NumberFormat("bn-BD");
 const ProductDetails = async({params,}: {params: Promise<Params>}) => {
     const { id } = await params;
 
-    const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products/${id}`,{cache:'force-cache'});
+    const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${id}`,{cache:'force-cache'});
     const data = await res.json();
 
     console.log(data);

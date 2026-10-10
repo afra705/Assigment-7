@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Marquee from "./components/Marquee";
 import MarqueeText from "react-marquee-text";
+import CategoryLinks from "./components/CategoryLinks";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,11 +31,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className=" min-h-full flex flex-col">
        
         <Navbar/>
+          <CategoryLinks/>
        <MarqueeText className="bg-white" direction="right" duration={20}>
          <Marquee/>
        </MarqueeText>
         <div className="max-w-7xl mx-auto">
           {children}
+          <Toaster/>
         </div>
         </body>
     </html>
