@@ -21,7 +21,7 @@ const Marquee = async() => {
 
 
     return (
-      <div className="flex gap-5">
+      <div className="flex gap-5 sm:pl-2">
         {data.map((product: INavlinks) => (
           <div className="flex gap-2 p-3 text-[13px]" key={product.slug}>
             <span>{product.categoryIcon}</span>

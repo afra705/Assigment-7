@@ -11,7 +11,9 @@
 .card-bg{
   background-color: #f8f8f8;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 
 @theme inline {
   --color-background: var(--background);
