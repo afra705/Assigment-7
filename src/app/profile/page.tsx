@@ -1,21 +1,37 @@
 
-/* eslint-disable @next/next/no-location-assign-relative-destination */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { IoArrowUndo } from "react-icons/io5";
 import { authClient } from "../lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const ProfilePage = () => {
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
+  const router = useRouter();
 
   const handleSignout = async () => {
-    toast.success("Signout successfully");
-    await authClient.signOut();
-    window.location.href = "/";
+    try {
+      const { error } = await authClient.signOut();
+
+      if (error) {
+        toast.error("Signout failed!");
+        return;
+      }
+
+      toast.success("Signout Successfully!");
+
+      setTimeout(() => {
+        router.push("/");
+        router.refresh();
+      }, 1500);
+    } catch (error) {
+      console.error("Signout error:", error);
+      toast.error("Something went wrong!");
+    }
   };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,6 +63,7 @@ const ProfilePage = () => {
     return (
       <div className="mt-10 px-4 text-center">
         <p>প্রোফাইল দেখতে প্রথমে সাইন ইন করুন।</p>
+
         <Link href="/sign-in" className="text-green-700 underline">
           সাইন ইন করুন
         </Link>
@@ -95,6 +112,7 @@ const ProfilePage = () => {
 
           {/* Signout Button */}
           <button
+            type="button"
             onClick={handleSignout}
             className="flex shrink-0 gap-1 items-center text-red-500 font-semibold px-2.5 py-1.5 rounded-lg text-xs border border-red-300 hover:bg-red-50 hover:border-red-400 transition-all duration-200"
           >

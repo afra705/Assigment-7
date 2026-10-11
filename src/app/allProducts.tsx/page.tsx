@@ -30,7 +30,7 @@ const AllProduct = async () => {
   const data = await res.json();
 
   return (
-    <div className="mt-6 sm:mt-8 lg:mt-10">
+    <div id='allproduct' className="mt-6 sm:mt-8 lg:mt-10">
       <h2 className="text-xl sm:text-2xl font-bold">সব পণ্য</h2>
 
       <p className="text-sm sm:text-[15px] text-gray-600">

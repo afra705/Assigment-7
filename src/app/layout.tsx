@@ -33,9 +33,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
        
         <Navbar/>
           <CategoryLinks/>
-       <MarqueeText className="bg-white" direction="right" duration={20}>
-         <Marquee/>
-       </MarqueeText>
+    
+<div className="sticky top-0  bg-white">
+  <MarqueeText className="bg-white" direction="right" duration={20}>
+    <Marquee />
+  </MarqueeText>
+</div>
+
         <div className="max-w-7xl mx-auto">
           {children}
           <Toaster/>        

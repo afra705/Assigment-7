@@ -25,7 +25,7 @@ const signInGithub = async () => {
 
 const SignInPage = () => {
 
-const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   const formData = new FormData(e.currentTarget);
@@ -39,13 +39,13 @@ const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     callbackURL: "/",
   });
 
-  if (error) {
-    console.error("Sign in failed:", error);
-    alert(error.message || "সাইন ইন ব্যর্থ হয়েছে");
-    return;
-  }
+  // if (error) {
+  //   console.error("Sign in failed:", error);
+  
+  //   return;
+  // }
      if (error) {
-    toast.error( "Sign up failed!");
+    toast.error( "Sign in failed!");
     return;
   }
 

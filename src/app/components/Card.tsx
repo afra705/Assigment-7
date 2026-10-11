@@ -40,9 +40,15 @@ const CardPage = ({product}:IP) => {
           {product.nameBn}
         </h2>
 
-        <p className="text-[10px] text-gray-500">
-          প্রতি {product.unit}
-        </p>
+       <p className="text-[10px] text-gray-500">
+        প্রতি {{
+          kg: "কেজি",
+          liter: "লিটার",
+          piece: "টি",
+          gram: "গ্রাম",
+          dozen: "ডজন",
+        }[product.unit] || product.unit}
+      </p>
       </div>
     </div>
 
